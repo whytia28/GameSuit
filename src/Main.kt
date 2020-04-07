@@ -1,5 +1,5 @@
 class Main {
-    companion object : ICallBack {
+    companion object {
         @JvmStatic
         fun main(args: Array<String>) {
             var exit = false
@@ -39,9 +39,6 @@ class Main {
                     "2" -> exit = true
                 }
             }
-        }
-
-        override fun hasilBalik(hasil: String) {
         }
     }
 }
