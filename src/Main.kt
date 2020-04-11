@@ -1,15 +1,16 @@
 class Main {
-    companion object {
+    companion object : ICallBack {
         @JvmStatic
         fun main(args: Array<String>) {
-            var exit = false
-            while (!exit) {
+            var input: String
+            do {
                 println("==================\nGAME SUIT TERMINAL\n==================")
                 println("Menu")
                 println("1. Main 2 player")
                 println("2. Exit")
                 print("Silakan masukan pilihan : ")
-                when (readLine().toString()) {
+                input = readLine().toString()
+                when (input) {
                     "1" -> {
                         print("Pemain pertama silakan masukan nama: ")
                         val pemain1 = readLine()?.toUpperCase()
@@ -27,7 +28,7 @@ class Main {
 
                             val control = Controler()
                             if (pemain1 != null) {
-                                control.caraMain(pemain1, pemain2, pemainPertama, pemainKedua)
+                                control.caraMain(pemain1, pemain2, pemainPertama, pemainKedua, this)
                             }
 
                             println("Main lagi? (Y/N)")
@@ -36,9 +37,13 @@ class Main {
 
                         } while (mainLagi == "y")
                     }
-                    "2" -> exit = true
+                    "2" -> {
+                        println("======== Good Bye ========")
+                    }
                 }
-            }
+            } while (input != "2")
+        }
+        override fun showResult(juri: String) {
         }
     }
 }

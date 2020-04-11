@@ -1,12 +1,12 @@
 class Controler {
-    fun caraMain(
-        pemain1: String?,
-        pemain2: String?,
-        pemainSatu: String?,
-        pemainDua: String?
-    ) {
-
-        if (pemainSatu == "batu" && pemainDua == "gunting"
+    fun caraMain(pemain1: String?,
+                 pemain2: String?,
+                 pemainSatu: String?,
+                 pemainDua: String?,
+                 iCallBack : ICallBack)
+    {
+        val juri =
+            if (pemainSatu == "batu" && pemainDua == "gunting"
             || pemainSatu == "gunting" && pemainDua == "kertas"
             || pemainSatu == "kertas" && pemainDua == "batu"
         ) {
@@ -18,10 +18,11 @@ class Controler {
         ) {
             println("$pemain2 MENANG!")
 
-        } else if (pemain1 == pemain2) {
-            println("DRAW!")
-        } else {
-            println("Pilihan salah!!")
+        }else {
+            println("DRAW!!")
         }
+
+        iCallBack.showResult(juri.toString())
     }
+
 }
