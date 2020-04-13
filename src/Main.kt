@@ -1,8 +1,9 @@
 class Main {
-    companion object : ICallBack {
+    companion object : ICallBack{
         @JvmStatic
         fun main(args: Array<String>) {
             var input: String
+
             do {
                 println("==================\nGAME SUIT TERMINAL\n==================")
                 println("Menu")
@@ -14,21 +15,19 @@ class Main {
                     "1" -> {
                         print("Pemain pertama silakan masukan nama: ")
                         val pemain1 = readLine()?.toUpperCase()
-                        println("Pemain pertama adalah $pemain1\n==========")
                         print("Pemain kedua silakan masukan nama : ")
                         val pemain2 = readLine()?.toUpperCase()
-                        println("Pemain kedua adalah $pemain2\n==========")
 
                         do {
-                            println("$pemain1 silakan pilih: (batu/gunting/kertas)")
-                            val pemainPertama = readLine()
+                            print("$pemain1 silakan pilih (batu/gunting/kertas): ")
+                            val pemainPertama = readLine()?.toLowerCase()
 
-                            println("$pemain2 silakan pilih: (batu/gunting/kertas)")
-                            val pemainKedua = readLine()
+                            print("$pemain2 silakan pilih (batu/gunting/kertas): ")
+                            val pemainKedua = readLine()?.toLowerCase()
 
-                            val control = Controler()
+                            val control = Controler(this)
                             if (pemain1 != null) {
-                                control.caraMain(pemain1, pemain2, pemainPertama, pemainKedua, this)
+                                control.caraMain(pemain1, pemain2, pemainPertama, pemainKedua)
                             }
 
                             println("Main lagi? (Y/N)")
@@ -43,7 +42,10 @@ class Main {
                 }
             } while (input != "2")
         }
-        override fun showResult(juri: String) {
+
+        override fun printResult(result: String) {
+            print("Hasil: ")
+            println(result)
         }
     }
 }

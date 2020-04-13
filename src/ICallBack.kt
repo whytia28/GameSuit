@@ -1,3 +1,3 @@
 interface ICallBack {
-    fun showResult(juri: String)
+    fun printResult(result: String)
 }
